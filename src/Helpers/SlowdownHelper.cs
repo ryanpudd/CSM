@@ -1,5 +1,6 @@
 using CSM.Commands;
 using CSM.Commands.Data.Internal;
+using CSM.Panels;
 using NLog;
 using UnityEngine;
 
@@ -46,7 +47,7 @@ namespace CSM.Helpers
                 _locallyDroppedFrames = 0;
             }
 
-            if (dropped > 0)
+            if (dropped > 0 && !ConnectionPanel.disableFrameSync)
             {
                 _logger.Debug($"{dropped} dropped frames!");
                 Command.SendToAll(new SlowdownCommand()

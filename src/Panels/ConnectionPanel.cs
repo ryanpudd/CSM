@@ -14,6 +14,9 @@ namespace CSM.Panels
         private UICheckBox _playerPointers;
         public static bool showPlayerPointers = false;
 
+        private UICheckBox _slowdown;
+        public static bool disableFrameSync = false;
+
         public override void Start()
         {
             // Activates the dragging of the window
@@ -29,7 +32,7 @@ namespace CSM.Panels
             relativePosition = new Vector3(view.fixedWidth / 2.0f - 180.0f, view.fixedHeight / 2.0f - 100.0f);
 
             width = 360;
-            height = 240;
+            height = 260;
 
             // Handle visible change events
             eventVisibilityChanged += (component, visible) =>
@@ -54,6 +57,13 @@ namespace CSM.Panels
             _playerPointers.eventClicked += (component, param) =>
             {
                 showPlayerPointers = _playerPointers.isChecked;
+            };
+
+            // Disable slowdowns
+            _slowdown = this.CreateCheckBox("Disable Frame Sync", new Vector2(10, -230));
+            _slowdown.eventClicked += (component, param) =>
+            {
+                disableFrameSync = _slowdown.isChecked;
             };
 
             _disconnectButton.eventClick += (component, param) =>
