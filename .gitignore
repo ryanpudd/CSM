@@ -263,3 +263,6 @@ __pycache__/
 
 .vscode/
 assemblies/
+
+# want to ignore logs as I'm just keeping them here
+logs/
