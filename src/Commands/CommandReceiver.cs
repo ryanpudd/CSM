@@ -61,8 +61,7 @@ namespace CSM.Commands
         private static void Parse(NetPacketReader reader, out CommandHandler handler, out CommandBase cmd)
         {
             cmd = Deserialize(reader.GetRemainingBytes());
-
-            _logger.Debug($"Received {cmd.GetType().Name}");
+            _logger.Debug($"Received {cmd.GetType().Name} from {cmd.SenderId}");
 
             handler = Command.GetCommandHandler(cmd.GetType());
             if (handler == null)
